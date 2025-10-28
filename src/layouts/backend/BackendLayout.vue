@@ -50,10 +50,10 @@ const profileOpen = ref(false)
               enter-to-class="opacity-100 max-h-40" leave-active-class="transition ease-in duration-500"
               leave-from-class="opacity-100 max-h-40" leave-to-class="opacity-0 max-h-0">
               <div v-show="projectsOpen" class="overflow-hidden ml-4 mt-1 space-y-1 text-sm">
-                <a href="#"
+                <RouterLink to="/admin/project"
                   class="flex items-center py-2 px-3 text-gray-600 rounded-md hover:bg-[#ff3434]/10 transition">
-                  <Check class="w-4 h-4 mr-3 text-[#ff3434]" /> Active Projects
-                </a>
+                  <Check class="w-4 h-4 mr-3 text-[#ff3434]" /> Learning Projects
+                </RouterLink>
                 <a href="#"
                   class="flex items-center py-2 px-3 text-gray-600 rounded-md hover:bg-[#ff3434]/10 transition">
                   <Check class="w-4 h-4 mr-3 text-[#ff3434]" /> Archived Projects
