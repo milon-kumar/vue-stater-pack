@@ -1,9 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Dashboard from './components/Dashboard.vue'
 </script>
 
 <template>
-
-  <HelloWorld msg="Vite + React" />
+  <Dashboard />
 </template>
-
