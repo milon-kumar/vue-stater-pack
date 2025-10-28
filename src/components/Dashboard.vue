@@ -1,270 +1,206 @@
 <script setup>
 import { ref } from 'vue'
 import logo from '../assets/logo.svg'
+import {
+  Home,
+  Folder,
+  Users,
+  Settings,
+  Bell,
+  Search,
+  ChevronDown,
+  ChevronRight,
+  LogOut,
+  ChartCandlestickIcon,
+  Check,
+  ChartPie,
+  SettingsIcon
+} from 'lucide-vue-next'
 
-// Reactive state for dropdowns and menus
 const projectsOpen = ref(false)
 const profileOpen = ref(false)
 </script>
 
 <template>
   <body class="bg-gray-50 font-sans text-gray-800">
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <aside class="w-56 bg-white border-r border-gray-200 flex flex-col">
-      <!-- Sidebar Header -->
-      <div class="h-20 flex items-center justify-center border-b border-gray-200">
-        <div class="w-36">
-          <img :src="logo" alt="Profile" class="rounded-md w-full h-full" />
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-56 bg-white border-r border-gray-200 flex flex-col">
+        <!-- Sidebar Header -->
+        <div
+          class="h-20 flex items-center justify-center border-b border-gray-200">
+          <div class="w-36">
+            <img :src="logo" alt="Profile" class="rounded-md w-full h-full" />
+          </div>
         </div>
-      </div>
 
-      <!-- Sidebar Navigation -->
-      <nav class="flex-1 px-2 py-4 space-y-2 text-sm">
-        <a
+        <!-- Sidebar Navigation -->
+        <nav class="flex-1 px-2 py-4 space-y-2 text-sm">
+          <a
             href="#"
-            class="flex items-center py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition"
-        >
-          <svg
-              class="w-5 h-5 mr-3 text-[#ff3434]"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-          >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 12l2-2m0 0l7-7 7 7m-9 2v6m0 0h6m-6 0H6"
-            />
-          </svg>
-          Home
-        </a>
+            class="flex items-center py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition">
+            <Home class="w-5 h-5 mr-3 text-[#ff3434]" />
+            Home
+          </a>
 
-        <!-- Projects dropdown -->
-        <div class="space-y-1">
-          <button
+          <!-- Projects dropdown -->
+          <div class="space-y-1">
+            <button
               @click="projectsOpen = !projectsOpen"
-              class="w-full flex items-center justify-between py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition"
-          >
-            <div class="flex items-center">
-              <svg
-                  class="w-5 h-5 mr-3 text-[#ff3434]"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-              >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 17v-6h6v6m-6 0h6m-6 0v6"
-                />
-              </svg>
-              Projects
-            </div>
-            <svg
+              class="w-full flex items-center justify-between py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition">
+              <div class="flex items-center">
+                <Folder class="w-5 h-5 mr-3 text-[#ff3434]" />
+                Projects
+              </div>
+              <ChevronDown
                 :class="{ 'rotate-180': projectsOpen }"
-                class="w-4 h-4 transform transition-transform duration-300"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+                class="w-4 h-4 transform transition-transform duration-300" />
+            </button>
 
-          <transition
+            <transition
               enter-active-class="transition ease-out duration-500"
               enter-from-class="opacity-0 max-h-0"
               enter-to-class="opacity-100 max-h-40"
               leave-active-class="transition ease-in duration-500"
               leave-from-class="opacity-100 max-h-40"
-              leave-to-class="opacity-0 max-h-0"
-          >
-            <div
+              leave-to-class="opacity-0 max-h-0">
+              <div
                 v-show="projectsOpen"
-                class="overflow-hidden ml-4 mt-1 space-y-1 text-sm"
-            >
-              <a
+                class="overflow-hidden ml-4 mt-1 space-y-1 text-sm">
+                <a
                   href="#"
-                  class="flex items-center py-2 px-3 text-gray-600 rounded-md hover:bg-[#ff3434]/10 transition"
-              >
-                <svg
-                    class="w-4 h-4 mr-2 text-[#ff3434]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                Active Projects
-              </a>
-              <a
+                  class="flex items-center py-2 px-3 text-gray-600 rounded-md hover:bg-[#ff3434]/10 transition">
+                  <Check class="w-4 h-4 mr-3 text-[#ff3434]" />
+                  Active Projects
+                </a>
+                <a
                   href="#"
-                  class="flex items-center py-2 px-3 text-gray-600 rounded-md hover:bg-[#ff3434]/10 transition"
-              >
-                <svg
-                    class="w-4 h-4 mr-2 text-[#ff3434]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                Archived Projects
-              </a>
-            </div>
-          </transition>
-        </div>
+                  class="flex items-center py-2 px-3 text-gray-600 rounded-md hover:bg-[#ff3434]/10 transition">
+                  <Check class="w-4 h-4 mr-3 text-[#ff3434]" />
+                  Archived Projects
+                </a>
+              </div>
+            </transition>
+          </div>
 
-        <a
+          <a
             href="#"
-            class="flex items-center py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition"
-        >
-          <svg
-              class="w-5 h-5 mr-3 text-[#ff3434]"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-          >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 17v-6h6v6m-6 0h6m-6 0v6"
-            />
-          </svg>
-          Analytics
-        </a>
+            class="flex items-center py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition">
+            <ChartPie class="w-5 h-5 mr-3 text-[#ff3434]" />
+            Analytics
+          </a>
 
-        <a
+          <a
             href="#"
-            class="flex items-center py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition"
-        >
-          <svg
-              class="w-5 h-5 mr-3 text-[#ff3434]"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-          >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z"
-            />
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 1v3m0 16v3m11-11h-3M4 12H1m16.364-7.364l-2.121 2.121M6.757 17.657l-2.121 2.121M17.657 17.657l2.121 2.121M6.757 6.343l2.121 2.121"
-            />
-          </svg>
-          Settings
-        </a>
-      </nav>
-    </aside>
+            class="flex items-center py-2 px-3 text-gray-700 rounded-md hover:bg-[#ff3434]/10 transition">
+            <Settings class="w-5 h-5 mr-3 text-[#ff3434]" />
+            Settings
+          </a>
+        </nav>
+      </aside>
 
-    <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
-      <!-- Header -->
-      <header class="h-20 bg-white border-b border-gray-200 px-6 flex justify-between items-center">
-        <div>
-          <h2 class="text-2xl font-semibold text-gray-800">Dashboard</h2>
-        </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header
+          class="h-20 bg-white border-b border-gray-200 px-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-800">Dashboard</h2>
+          </div>
 
-        <div class="flex items-center space-x-3">
-          <!-- Search -->
-          <div class="relative">
-            <input
+          <div class="flex items-center space-x-3">
+            <!-- Search -->
+            <div class="relative">
+              <input
                 type="text"
                 placeholder="Search..."
-                class="pl-10 pr-4 py-1 rounded-md border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#ff3434] focus:border-[#ff3434]"
-            />
-            <svg
+                class="pl-10 pr-4 py-1 rounded-md border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#ff3434] focus:border-[#ff3434]" />
+              <svg
                 class="w-5 h-5 absolute left-3 top-[8px] text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
-            </svg>
-          </div>
-
-          <!-- Quick Buttons -->
-          <button class="p-2 rounded-full hover:bg-gray-100 transition">
-            <svg
-                class="w-6 h-6 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-            >
-              <path
+                viewBox="0 0 24 24">
+                <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-          </button>
+                  d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+              </svg>
+            </div>
 
-          <button class="p-2 rounded-full hover:bg-gray-100 transition">
-            <svg
-                class="w-6 h-6 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-            >
-              <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2m-4 0H7a2 2 0 01-2-2v-6a2 2 0 012-2h6m-2-4h0a2 2 0 012 2v0a2 2 0 01-2 2h0a2 2 0 01-2-2v0a2 2 0 012-2z"
-              />
-            </svg>
-          </button>
-
-          <!-- Profile Dropdown -->
-          <div class="relative">
-            <button @click="profileOpen = !profileOpen" class="flex items-center space-x-2 focus:outline-none">
-              <img src="https://i.pravatar.cc/40" alt="Profile" class="w-8 h-8 rounded-md border-2 border-[#ff3434]" />
-              <span class="text-gray-800 font-medium">John Doe</span>
+            <!-- Quick Buttons -->
+            <button class="p-2 rounded-full hover:bg-gray-100 transition">
               <svg
+                class="w-6 h-6 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </button>
+
+            <button class="p-2 rounded-full hover:bg-gray-100 transition">
+              <svg
+                class="w-6 h-6 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2m-4 0H7a2 2 0 01-2-2v-6a2 2 0 012-2h6m-2-4h0a2 2 0 012 2v0a2 2 0 01-2 2h0a2 2 0 01-2-2v0a2 2 0 012-2z" />
+              </svg>
+            </button>
+
+            <!-- Profile Dropdown -->
+            <div class="relative">
+              <button
+                @click="profileOpen = !profileOpen"
+                class="flex items-center space-x-2 focus:outline-none">
+                <img
+                  src="https://i.pravatar.cc/40"
+                  alt="Profile"
+                  class="w-8 h-8 rounded-md border-2 border-[#ff3434]" />
+                <span class="text-gray-800 font-medium">John Doe</span>
+                <svg
                   class="w-4 h-4 text-gray-600"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
-                  viewBox="0 0 24 24"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
 
-            <transition name="fade">
-              <div
+              <transition name="fade">
+                <div
                   v-show="profileOpen"
                   @click.outside="profileOpen = false"
-                  class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md py-2 z-10"
-              >
-                <a href="#" class="block px-4 py-2 hover:bg-[#ff3434]/10">Profile</a>
-                <a href="#" class="block px-4 py-2 hover:bg-[#ff3434]/10">Settings</a>
-                <a href="#" class="block px-4 py-2 hover:bg-[#ff3434]/10">Logout</a>
-              </div>
-            </transition>
+                  class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md py-2 z-10">
+                  <a href="#" class="block px-4 py-2 hover:bg-[#ff3434]/10"
+                    >Profile</a
+                  >
+                  <a href="#" class="block px-4 py-2 hover:bg-[#ff3434]/10"
+                    >Settings</a
+                  >
+                  <a href="#" class="block px-4 py-2 hover:bg-[#ff3434]/10"
+                    >Logout</a
+                  >
+                </div>
+              </transition>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <!-- Main Dashboard Content -->
+        <!-- Main Dashboard Content -->
         <main class="flex-1 p-6 space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Revenue Card -->
@@ -709,7 +645,7 @@ const profileOpen = ref(false)
             </div>
           </section>
         </main>
+      </div>
     </div>
-  </div>
   </body>
 </template>
