@@ -1,5 +1,5 @@
 <template>
-  <button :class="computedClass" @click="$emit('click')">
+  <button :class="computedClass" @click="$emit('handleClick', $event)">
     <slot>{{ label }}</slot>
   </button>
 </template>
